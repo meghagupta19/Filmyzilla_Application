@@ -1,0 +1,40 @@
+<resources>
+
+    <string name="app_name">Filmyzilla</string>
+    <string name="affirmation1">Chewbacca from Star Wars</string>
+    <string name="affirmation2">Groot from Marvel</string>
+    <string name="affirmation3">Yoda from Star Wars</string>
+    <string name="affirmation4">R2D2 from Star Wars</string>
+    <string name="affirmation5">Reepicheep from Chronicles Of Narnia</string>
+    <string name="affirmation6">Dexter in Night at the Museum</string>
+    <string name="affirmation7">Porgs from Star Wars</string>
+
+    <string name="home">Home</string>
+    <string name="gallery">Gallery</string>
+    <string name="settings">Settings</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="login">Login</string>
+
+    <string name="megha_gupta">Megha Gupta</string>
+    <string name="megs_gupta">megs.gupta</string>
+    <string name="android_developer">Android Developer</string>
+
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hvjhv">gvjh</string>
+    <string name="welcome_to_filmyzilla">Welcome to Filmyzilla</string>
+    <string name="change_your_wallpaper">Change your wallpaper</string>
+
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="Filmyzilla">filmyzilla</string>
+    <string name="version_4_1_40_3">Version 4.1.40.3</string>
+    <string name="all_rights_are_reserved">All Rights Are Reserved</string>
+    <string name="copyright_2016_2022">Copyright 2016–2022</string>
+    <string name="copyright_logo">Copyright logo</string>
+
+
+</resources>
