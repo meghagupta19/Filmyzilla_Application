@@ -118,15 +118,13 @@ class SignUpFragment : Fragment() {
         }
 
 
-            mAuth?.let {
-                activity?.let { it1 ->
+            activity?.let {it ->
                     PhoneAuthProvider.getInstance().verifyPhoneNumber(
                         xMobileNumber,        // Phone number to verify
                         60,                 // Timeout duration
                         TimeUnit.SECONDS,   // Unit of timeout
-                        it1,              // Activity (for callback binding) //NOT SURE ABOUT THIS
+                        it,              // Activity (for callback binding) //NOT SURE ABOUT THIS
                         callbacks)
-                }
             }        // OnVerificationStateChangedCallbacks
 
 
