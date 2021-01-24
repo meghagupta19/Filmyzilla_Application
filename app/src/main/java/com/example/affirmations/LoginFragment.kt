@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 
@@ -32,14 +31,11 @@ class LoginFragment : Fragment() {
             view.findViewById<Button>(R.id.login).setOnClickListener {
                 //FirebaseAuth.getInstance().signOut()
 
-                if (pass.isEmpty()||mob.isEmpty()) {
-                    Toast.makeText(activity, "Fields are required", Toast.LENGTH_SHORT).show()
-                }
 
-                else{
+
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
-               }
+
             }
 
 

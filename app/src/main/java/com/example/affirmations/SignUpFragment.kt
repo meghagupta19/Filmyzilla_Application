@@ -11,10 +11,14 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseException
+import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
+import com.google.firebase.ktx.Firebase
 import java.util.concurrent.Executor
 import java.util.concurrent.TimeUnit
 
@@ -26,8 +30,7 @@ class SignUpFragment : Fragment() {
     private var xOTP: EditText? = null
     var codeSent: String? = null
     private var pass: EditText? = null
-    private lateinit var callbacks: OnVerificationStateChangedCallbacks
-
+    private var verificationInProgress = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -118,27 +121,67 @@ class SignUpFragment : Fragment() {
         }
 
 
-            activity?.let {it ->
-                    PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                        xMobileNumber,        // Phone number to verify
-                        60,                 // Timeout duration
-                        TimeUnit.SECONDS,   // Unit of timeout
-                        it,              // Activity (for callback binding) //NOT SURE ABOUT THIS
-                        callbacks)
-            }        // OnVerificationStateChangedCallbacks
+        activity?.let {
+            PhoneAuthOptions.newBuilder(Firebase.auth)
+                .setPhoneNumber(xPhone!!.text.toString())       // Phone number to verify
+                .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                .setActivity(it)         // Activity (for callback binding)
+                .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
+                .build()
+        }?.let {
+            PhoneAuthProvider.verifyPhoneNumber(   // OnVerificationStateChangedCallbacks
+                it
+            )
+        }
 
 
 
     }
-    private var mCallbacks: OnVerificationStateChangedCallbacks =
+    private var callbacks: OnVerificationStateChangedCallbacks =
         object : OnVerificationStateChangedCallbacks() {
-            override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {}
-            override fun onVerificationFailed(e: FirebaseException) {}
+
+            override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
+                Log.d(TAG, "onVerificationCompleted:$phoneAuthCredential")
+                // [START_EXCLUDE silent]
+                verificationInProgress = false
+                // [END_EXCLUDE]
+
+                // [START_EXCLUDE silent]
+                // Update the UI and attempt sign in with the phone credential
+
+                // [END_EXCLUDE]
+                signInWithPhoneAuthCredential(phoneAuthCredential)
+            }
+
+            override fun onVerificationFailed(e: FirebaseException) {
+                Log.w(TAG, "onVerificationFailed", e)
+                // [START_EXCLUDE silent]
+                verificationInProgress = false
+                // [END_EXCLUDE]
+
+                if (e is FirebaseAuthInvalidCredentialsException) {
+                    // Invalid request
+                    // [START_EXCLUDE]
+                    xPhone!!.error = "Invalid phone number."
+                    // [END_EXCLUDE]
+                } else if (e is FirebaseTooManyRequestsException) {
+                    // The SMS quota for the project has been exceeded
+                    // [START_EXCLUDE]
+                    activity?.let {
+                        Snackbar.make(
+                            it.findViewById(android.R.id.content), "Quota exceeded.",
+                            Snackbar.LENGTH_SHORT).show()
+                    }
+                    // [END_EXCLUDE]
+                }
+            }
             override fun onCodeSent(s: String, forceResendingToken: ForceResendingToken) {
                 super.onCodeSent(s, forceResendingToken)
                 codeSent = s
             }
         }
+
+
 
 
 }
