@@ -21,6 +21,6 @@
 
     <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:fontFamily">@font/bubblegum_sans</item>
-        <item name="android:textColor">@color/white</item>
+
     </style>
 </resources>

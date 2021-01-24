@@ -1,14 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    app:layout_constraintWidth_percent=".8"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginFragment">
 
 
+    <EditText
+        android:id="@+id/mobileNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:autofillHints="@string/Mobile_number"
+        android:background="@drawable/edit_text"
+        android:hint="@string/Mobile_number"
+        android:inputType="number"
+        android:paddingStart="30dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.239" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mobileNumber"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:hint="@string/password"
+        android:autofillHints="Password"
+        android:background="@drawable/edit_text"
+        android:paddingStart="30dp"
+        android:paddingEnd="0dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/password"
+        android:inputType="textPassword"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
 
 
+    <Button
+        android:layout_width="0dp"
+        android:id="@+id/login"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bubblegum_sans"
+        android:background="@drawable/button_bg"
+        android:padding="8dp"
+        android:text="@string/login"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintHeight_percent=".7"
+        app:layout_constraintStart_toStartOf="@id/password"
+        app:layout_constraintTop_toBottomOf="@+id/forgot_password"
+        app:layout_constraintVertical_bias="0.212"
+         />
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forgot_password"
+        android:id="@+id/forgot_password"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginEnd="30dp"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 

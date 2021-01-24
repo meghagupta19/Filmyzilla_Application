@@ -1,11 +1,13 @@
 package com.example.affirmations
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.FragmentTransaction
+import com.example.affirmations.child_fragments.PolicyFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.drawer_toolbar.*
@@ -13,10 +15,11 @@ import kotlinx.android.synthetic.main.drawer_toolbar.*
 class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener{
 
     private lateinit var homeFragment: HomeFragment
-    private lateinit var loginFragment: LoginFragment
+
     private lateinit var galleryFragment: GalleryFragment
-    private lateinit var contactFragment: ContactFragment
-    private lateinit var settingFragment: SettingFragment
+    //private lateinit var contactFragment: ContactFragment
+    //private lateinit var settingFragment: SettingFragment
+    private lateinit var policyFragment: PolicyFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,26 +81,23 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                     .commit()
             }
             R.id.login -> {
-                loginFragment = LoginFragment()
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.fragment, loginFragment)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .commit()
+
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
             }
-            R.id.contact -> {
+            /*R.id.contact -> {
                 contactFragment = ContactFragment()
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.fragment, contactFragment)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .commit()
-            }
+            }*/
             R.id.settings -> {
-                settingFragment = SettingFragment()
+                policyFragment = PolicyFragment()
                 supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.fragment, settingFragment)
+                    .replace(R.id.fragment, policyFragment)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .commit()
             }
