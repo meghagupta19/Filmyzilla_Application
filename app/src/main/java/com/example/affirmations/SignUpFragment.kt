@@ -15,12 +15,14 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.fragment_sign_up.*
 import java.util.concurrent.Executor
 import java.util.concurrent.TimeUnit
+
 
 class SignUpFragment : Fragment() {
 
@@ -29,12 +31,11 @@ class SignUpFragment : Fragment() {
     private var xPhone: EditText? = null
     private var xOTP: EditText? = null
     var codeSent: String? = null
-    private var pass: EditText? = null
     private var verificationInProgress = false
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
 
@@ -47,17 +48,15 @@ class SignUpFragment : Fragment() {
         val submitButton = view.findViewById<Button>(R.id.signup)
         xPhone = view.findViewById(R.id.mobileNumber)
         xOTP = view.findViewById(R.id.otp)
-        pass=view.findViewById(R.id.password)
         mAuth = FirebaseAuth.getInstance()
-        submitButton.visibility=View.GONE
+
         getOTP.setOnClickListener { sendVerificationCode() }
-        submitButton.visibility=View.VISIBLE
         submitButton.setOnClickListener { verifyOTP() }
     }
 
     private fun verifyOTP() {
         val tOTP = xOTP!!.text.toString().trim { it <= ' ' }
-        val passw = pass!!.text.toString().trim { it <= ' ' }
+
         if (tOTP.isEmpty()) {
             xOTP!!.error = "OTP is required!"
             xOTP!!.requestFocus()
@@ -68,11 +67,7 @@ class SignUpFragment : Fragment() {
             xOTP!!.requestFocus()
             return
         }
-        if (passw.isEmpty()) {
-            pass!!.error = "Password is required!"
-            pass!!.requestFocus()
-            return
-        }
+
         if (TextUtils.isEmpty(codeSent) || codeSent == null) {
             Toast.makeText(activity, "Please wait until code received", Toast.LENGTH_SHORT).show()
             return
@@ -83,28 +78,30 @@ class SignUpFragment : Fragment() {
 
     }
 
+
+
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         mAuth!!.signInWithCredential(credential)
             .addOnCompleteListener(
-                (activity as Executor),
-                { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "signInWithCredential:success")
-                        task.result!!.user
-                        // ...
-                    } else {
-                        // Sign in failed, display a message and update the UI
-                        Log.w(TAG, "signInWithCredential:failure", task.exception)
-                        if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                            // The verification code entered was invalid
-                            xOTP?.error = "Enter Valid OTP!"
-                            xOTP?.requestFocus()
+                    (activity as Executor),
+                    { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success")
+                            task.result!!.user
+                            // ...
+                        } else {
+                            // Sign in failed, display a message and update the UI
+                            Log.w(TAG, "signInWithCredential:failure", task.exception)
+                            if (task.exception is FirebaseAuthInvalidCredentialsException) {
+                                // The verification code entered was invalid
+                                xOTP?.error = "Enter Valid OTP!"
+                                xOTP?.requestFocus()
 
-                            return@addOnCompleteListener
+                                return@addOnCompleteListener
+                            }
                         }
-                    }
-                })
+                    })
     }
 
     private fun sendVerificationCode() {
@@ -130,12 +127,10 @@ class SignUpFragment : Fragment() {
                 .build()
         }?.let {
             PhoneAuthProvider.verifyPhoneNumber(   // OnVerificationStateChangedCallbacks
-                it
+                    it
             )
+
         }
-
-
-
     }
     private var callbacks: OnVerificationStateChangedCallbacks =
         object : OnVerificationStateChangedCallbacks() {
@@ -169,8 +164,8 @@ class SignUpFragment : Fragment() {
                     // [START_EXCLUDE]
                     activity?.let {
                         Snackbar.make(
-                            it.findViewById(android.R.id.content), "Quota exceeded.",
-                            Snackbar.LENGTH_SHORT).show()
+                                it.findViewById(android.R.id.content), "Quota exceeded.",
+                                Snackbar.LENGTH_SHORT).show()
                     }
                     // [END_EXCLUDE]
                 }

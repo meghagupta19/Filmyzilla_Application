@@ -1,11 +1,11 @@
 package com.example.affirmations
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.affirmations.child_fragments.adapters.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.activity_login.*
+
 
 
 class LoginActivity : AppCompatActivity() {
@@ -28,15 +28,15 @@ class LoginActivity : AppCompatActivity() {
     private fun setUpTabs() {
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(LoginFragment(),"Login")
-        adapter.addFragment(SignUpFragment(),"Sign Up")
+        adapter.addFragment(LoginFragment(),"Via Email")
+        adapter.addFragment(SignUpFragment(),"Via Phone")
 
         //tabLayout.getTabAt(0)!!.text = "Login"
         //tabLayout.getTabAt(1)!!.text = "Sign Up"
         viewPager.adapter = adapter
-        tabLayout.setupWithViewPager(view_pager)
-        tabLayout.getTabAt(0)!!.text = "Login"
-        tabLayout.getTabAt(1)!!.text = "Sign Up"
+        tabLayout.setupWithViewPager(viewPager)
+        tabLayout.getTabAt(0)!!.text = "Via Email"
+        tabLayout.getTabAt(1)!!.text = "Via Phone"
     }
 
 
