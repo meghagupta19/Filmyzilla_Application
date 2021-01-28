@@ -60,6 +60,7 @@
     <string name="status_sign_in_failed">Status Sign Up Failed</string>
     <string name="signed_out">Sign Out</string>
     <string name="signed_in">Sign Up</string>
+    <string name="Resend_OTP">resend</string>
 
 
 </resources>
