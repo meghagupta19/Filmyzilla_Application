@@ -61,6 +61,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage-ktx'
     implementation 'com.google.firebase:firebase-storage:19.2.1'
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-database-ktx:19.6.0'
     implementation 'com.google.firebase:firebase-database:19.6.0'
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
@@ -72,4 +73,9 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.4.0'
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
     compile 'com.google.android.gms:play-services-safetynet:17.0.0'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'com.firebaseui:firebase-ui-database:6.2.1'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
 }
