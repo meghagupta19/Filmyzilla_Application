@@ -62,6 +62,7 @@
     <string name="email">Email</string>
     <string name="new_user">New User?</string>
     <string name="signup">SignUp</string>
+    <string name="download">download</string>
 
 
 </resources>
