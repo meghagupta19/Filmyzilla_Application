@@ -3,7 +3,4 @@ package com.example.affirmations
 import androidx.fragment.app.Fragment
 
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
-
-
-}
+class HomeFragment : Fragment(R.layout.fragment_home)
