@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "885972250567",
+    "project_id": "filmyzilla-fd5cb",
+    "storage_bucket": "filmyzilla-fd5cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885972250567:android:6ab333a100716ad779b3e2",
+        "android_client_info": {
+          "package_name": "com.example.affirmations"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885972250567-ntfbv9rh6t1a45e8045ri4kmgdifipon.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.affirmations",
+            "certificate_hash": "42ae450a9f648123fcfec842a7251eb9314dc80e"
+          }
+        },
+        {
+          "client_id": "885972250567-s4e0b2be0erp8373qe8ufl67rhjjgr0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5CndMLEn1W_YzvFWzM9e38Vj9o3e677k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885972250567-s4e0b2be0erp8373qe8ufl67rhjjgr0g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
