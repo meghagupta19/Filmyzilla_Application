@@ -10,15 +10,15 @@
         android:roundIcon="@drawable/video_camera"
         android:supportsRtl="true"
         android:theme="@style/Theme.Affirmations">
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"/>
+
     </application>
 
 </manifest>
